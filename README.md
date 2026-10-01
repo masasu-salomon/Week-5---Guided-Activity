@@ -244,3 +244,38 @@ export default App;
    Create another reducer for managing user authentication.
 
 ---
+
+# **Project Notes**
+
+## Running the App
+```bash
+npm install
+npm run dev
+```
+Open `http://localhost:5173/`. Every dispatched action is logged in the browser console by `redux-logger`.
+
+## Project Structure
+```
+src/
+├── components/
+│   ├── Auth.tsx / Auth.module.css        # Login/logout using the auth slice
+│   └── Counter.tsx / Counter.module.css  # Increment, decrement, reset, set value
+├── store/
+│   ├── actions/
+│   │   ├── authActions.ts                # LOGIN, LOGOUT
+│   │   └── counterActions.ts             # INCREMENT, DECREMENT, RESET, SET_VALUE
+│   ├── reducers/
+│   │   ├── authReducer.ts
+│   │   ├── counterReducer.ts
+│   │   └── index.ts                      # combineReducers -> rootReducer
+│   ├── hooks.ts                          # Typed useAppSelector / useAppDispatch
+│   ├── localStorage.ts                   # Load/save persisted state
+│   └── store.ts                          # createStore + redux-logger middleware
+├── App.tsx
+└── main.tsx                              # Wraps App in the Redux Provider
+```
+
+## Optional Challenges Completed
+- State is persisted to `localStorage` and restored on reload.
+- The counter can be set to a custom value with the `SET_VALUE` action.
+- A second reducer (`authReducer`) manages a simple login state.
