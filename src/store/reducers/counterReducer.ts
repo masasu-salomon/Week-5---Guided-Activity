@@ -1,3 +1,4 @@
+import type { UnknownAction } from "redux";
 import { INCREMENT, DECREMENT, RESET } from "../actions/counterActions";
 import type { CounterAction } from "../actions/counterActions";
 
@@ -11,7 +12,7 @@ const initialState: CounterState = {
 
 export const counterReducer = (
   state: CounterState = initialState,
-  action: CounterAction
+  action: CounterAction | UnknownAction
 ): CounterState => {
   switch (action.type) {
     case INCREMENT:
